@@ -3,8 +3,9 @@
 import scrapy
 import json
 import logging
-import datetime
 import psycopg2
+import math
+from datetime import date, datetime
 
 
 class IndexSpider(scrapy.Spider):
@@ -14,7 +15,7 @@ class IndexSpider(scrapy.Spider):
         urls = [
             'http://www.cninfo.com.cn/cninfo-new/announcement/query',
         ]
-        today = datetime.date.today()
+        today = datetime.today()
         for url in urls:
             yield scrapy.FormRequest(url=url, callback=self.parse,
                                      formdata={"seDate": today.strftime('%Y-%m-%d'), "tabName": "fulltext",
@@ -33,7 +34,7 @@ class IndexSpider(scrapy.Spider):
             ann = (
                 row["announcementId"],
                 row["announcementTitle"],
-                row["announcementTime"],
+                datetime.fromtimestamp(math.floor(row["announcementTime"]/1000)),
                 row["adjunctUrl"],
                 row["adjunctSize"],
                 row["adjunctType"],
@@ -47,10 +48,12 @@ class IndexSpider(scrapy.Spider):
         cur = conn.cursor()
         query_data = ','.join(cur.mogrify('(%s,%s,%s,%s,%s,%s,%s,%s,%s)', row) for row in data)
         # announcement_id,announcement_title,announcement_time,adjunct_url,adjunct_size,adjunct_type,sec_code,sec_name,org_id
-        insert_q = "INSERT INTO cninfo_announcement VALUES {0} ON CONFLICT DO NOTHING;".format(query_data)
-        print insert_q
+        insert_q = "INSERT INTO cninfo_announcement(announcement_id,announcement_title,announcement_time,adjunct_url,adjunct_size,adjunct_type,sec_code,sec_name,org_id) VALUES {0} ON CONFLICT DO NOTHING;".format(query_data)
+        logger.warn(unicode(insert_q, "utf-8"))
         try:
             cur.execute(insert_q)
         except psycopg2.Error:
             self.logger.exception('Database error')
+        conn.commit()
         cur.close()
+        conn.close()
