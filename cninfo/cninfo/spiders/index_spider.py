@@ -35,6 +35,7 @@ class IndexSpider(scrapy.Spider):
         # totalRecordNum = jsonBody["totalRecordNum"]
         hasMore = jsonBody["hasMore"]
         data = []
+        rowcount = 0
         for row in jsonBody["announcements"]:
             ann = (
                 row["announcementId"],
