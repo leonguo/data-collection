@@ -146,4 +146,7 @@ user_agents = random.choice(USER_AGENT_LIST)
 if user_agents:
     USER_AGENT = user_agents
 else:
-    USER_AGENT = "Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/535.24 (KHTML, like Gecko) Chrome/19.0.1055.1 Safari/535.24"  
+    USER_AGENT = "Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/535.24 (KHTML, like Gecko) Chrome/19.0.1055.1 Safari/535.24"
+
+# psql的配置
+POSTGRESQL_DSN = "dbname=app user=postgres password=123456 host=120.24.229.18 port=5432"
