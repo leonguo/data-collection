@@ -8,7 +8,8 @@
 import scrapy
 
 
-class CninfoItem(scrapy.Item):
+class CodeItem(scrapy.Item):
     # define the fields for your item here like:
-    # name = scrapy.Field()
-    pass
+    sec_code = scrapy.Field()
+    sec_name = scrapy.Field()
+    # pass
