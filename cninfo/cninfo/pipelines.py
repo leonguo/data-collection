@@ -7,6 +7,7 @@
 import psycopg2
 import logging
 
+
 class CodePipeline(object):
     def __init__(self, psql_dsn):
         self.psql_dsn = psql_dsn
@@ -27,9 +28,10 @@ class CodePipeline(object):
         self.client.close()
 
     def process_item(self, item, spider):
-        sec_code = int(item["sec_code"])
+        sec_code = item["sec_code"]
         sec_name = item["sec_name"]
-        insert_q = "INSERT INTO share_certificate(sec_code,sec_name) VALUES ({0},'{1}') ON CONFLICT DO NOTHING;".format(sec_code,sec_name)
+        insert_q = "INSERT INTO share_certificate(sec_code,sec_name) VALUES ('{0}','{1}') ON CONFLICT DO NOTHING;".format(
+            sec_code, sec_name)
         self.logger.warning(unicode(insert_q, "utf-8"))
         try:
             self.cur.execute(insert_q)
@@ -37,6 +39,6 @@ class CodePipeline(object):
             self.logger.exception('Database error')
         self.client.commit()
         return item
-    #
-    # def process_item(self, item, spider):
-    #     return item
+        #
+        # def process_item(self, item, spider):
+        #     return item

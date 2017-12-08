@@ -7,7 +7,7 @@ import psycopg2
 import math
 from datetime import date, datetime
 
-
+#最新公告爬取
 class IndexSpider(scrapy.Spider):
     name = "index"
     page = 1

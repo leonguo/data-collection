@@ -13,9 +13,11 @@ reload(sys)
 sys.setdefaultencoding('utf-8')
 
 
+# 股票代码爬虫
 class CodeSpider(scrapy.Spider):
     name = "code"
 
+    page = 1;
     custom_settings = {
         'ITEM_PIPELINES': {
             'cninfo.pipelines.CodePipeline': 300,
@@ -30,9 +32,14 @@ class CodeSpider(scrapy.Spider):
     def parse(self, response):
         self.logger.warning("response: poster index page[%s] crawl status: %d", response.url, response.status)
         code_table = response.xpath('//table[@class="table_data"]/tr')
-        for code in code_table:
-            l = ItemLoader(item=CodeItem(), selector=code)
-            l.default_output_processor = scrapy.loader.processors.TakeFirst()
-            l.add_xpath('sec_code', 'td[1]/nobr/a/text()')
-            l.add_xpath('sec_name', 'td[2]/nobr/a/text()')
-            yield l.load_item()
+        if len(code_table) > 0:
+            for code in code_table:
+                l = ItemLoader(item=CodeItem(), selector=code)
+                l.default_output_processor = scrapy.loader.processors.TakeFirst()
+                l.add_xpath('sec_code', 'td[1]/nobr/a/text()')
+                l.add_xpath('sec_name', 'td[2]/nobr/a/text()')
+                yield l.load_item()
+            self.page += 1
+            next_page = "http://quote.cfi.cn/quotelist.aspx?sortcol=zdf&sortway=desc&sectypeid=1&pageindex={0}&cfidata=1".format(
+                self.page)
+            yield scrapy.Request(url=next_page, callback=self.parse)
