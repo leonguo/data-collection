@@ -7,7 +7,8 @@ import psycopg2
 import math
 from datetime import date, datetime
 
-#最新公告爬取
+# 最新公告爬取
+
 class IndexSpider(scrapy.Spider):
     name = "index"
     page = 1
@@ -31,12 +32,12 @@ class IndexSpider(scrapy.Spider):
         logger = logging.getLogger()
         logger.warn("response: poster index page[%s] crawl status: %d", response.url, response.status)
         # logger.warn(unicode(response.body, "utf-8"))
-        jsonBody = json.loads(unicode(response.body, "utf-8"))
+        json_body = json.loads(unicode(response.body, "utf-8"))
         # totalRecordNum = jsonBody["totalRecordNum"]
-        hasMore = jsonBody["hasMore"]
+        has_more = json_body["hasMore"]
         data = []
         rowcount = 0
-        for row in jsonBody["announcements"]:
+        for row in json_body["announcements"]:
             ann = (
                 row["announcementId"],
                 row["announcementTitle"],
@@ -63,9 +64,9 @@ class IndexSpider(scrapy.Spider):
         except psycopg2.Error:
             self.logger.exception('Database error')
         if rowcount and rowcount > 0:
-            if hasMore:
+            if has_more:
                 self.page += 1
-                print  self.page
+                print(self.page)
                 yield scrapy.FormRequest(url=response.url, callback=self.parse,
                                          formdata=self.get_request_body(self.page))
 
