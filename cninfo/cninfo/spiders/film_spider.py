@@ -18,6 +18,12 @@ class FilmSpider(scrapy.Spider):
     name = "film"
     page = 1
 
+    # http://58921.com/user/login/ajax?ajax=submit&__q=user/login
+    # mail:469624718 @ qq.com
+    # pass:123456
+    # form_id:user_login_form
+    # form_token:c58a2194ff6c2db654c3dbf82be32459
+    # submit:登录
     def start_requests(self):
         login_url = "http://58921.com/user/login"
         yield scrapy.FormRequest(url=login_url, callback=self.after_login, method = "POST",
