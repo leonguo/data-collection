@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>2017年总票房 - 电影票房排行榜 - 电影票房数据库</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="2017年内地电影票房总排行榜，提供2017年在内地上映的电影累积总票房查询"/>
+    <meta name="keywords" content="2017电影票房|票房排行榜"/>
+    <link rel="shortcut icon" href="/misc/images/favicon.ico" type="image/x-icon"/>
+    <link rel="bookmark" href="/misc/images/favicon.ico"/>
+    <link type="text/css" rel="stylesheet" media="all"
+          href="/sites/all/movie/files/cache/css_js/1fa74c2b45e6d54e3ebe3038e7d5e7dd.css?1508644712"/>
+    <script type="text/javascript">
+        <!--//-->
+        <![CDATA[//><!--
+        var Dida = {cache: {},
+            module: {
+                system: {},
+                user: {},
+                block: {},
+                weixin: {},
+                weibo: {},
+                solr: {},
+                robots: {},
+                pp: {},
+                page: {},
+                og: {},
+                msearch: {},
+                movie_weixin: {},
+                movie_screen: {},
+                movie_ask: {},
+                movie: {},
+                mobile: {},
+                message: {},
+                highcharts: {},
+                film_og: {},
+                film_name: {},
+                film_field: {},
+                film_brand: {},
+                film_block: {},
+                film_article: {},
+                film: {},
+                field: {},
+                content: {},
+                comment: {},
+                bsearch: {},
+                boxoffice: {},
+                banned: {},
+                api: {}
+            },
+            settings: {
+                "pager": {"1": {"sum": 20, "current": 0}},
+                "cache_css_and_js_timestamp": 1508644712,
+                "base_theme": "/sites/all/movie/themes/filmt",
+                "base_ui_theme": "bootstrap",
+                "base_path": "/",
+                "language_code": "zh-hans",
+                "clean_url": true,
+                "user_is_login": false,
+                "user_agent": "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36"
+            }
+        }
+        //--><!
+        ]]>
+    </script>
+    <script type="text/javascript"
+            src="/sites/all/movie/files/cache/css_js/9ef7e19188a0a32a4b6d1c23622eeb3f.js?1508644712"></script>
+
+</head>
+<body class="user_is_anonymous page_wrapper_alltime">
+
+<div id="header" class="navbar navbar-inverse" role="banner">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse"
+                    data-target="#dida-site-menu-navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="/" title="电影票房数据库" class="logo navbar-brand">
+                <img src="/sites/all/movie/files/cache/themes/filmt_logo.png" alt="" title="电影票房数据库"/>
+            </a>
+        </div>
+        <div class="navbar-collapse collapse" id="dida-site-menu-navbar-collapse" role="navigation">
+            <ul class="site_menu nav navbar-nav mr-auto">
+                <li class="nav-item site_menu_list site_menu_list_front site_menu_list_index_1 first"><a
+                        class="nav-link" href="/" title="首页">首页</a></li>
+                <li class="nav-item site_menu_list site_menu_list_system_top site_menu_list_index_2"><a class="nav-link"
+                                                                                                        href="/alltime"
+                                                                                                        title="内地电影票房总排行榜">票房排行榜</a>
+                </li>
+                <li class="nav-item site_menu_list site_menu_list_system_boxoffice_live site_menu_list_index_3"><a
+                        class="nav-link" href="/boxoffice/live" title="最新电影实时票房统计">实时票房</a></li>
+                <li class="nav-item site_menu_list site_menu_list_system_weixin_follow site_menu_list_index_4"><a
+                        class="nav-link" href="/weixin_follow.html" title="通过微信关注电影票房数据库">关注微信</a></li>
+                <li class="nav-item dropdown site_menu_list site_menu_list_movie_schedule site_menu_list_index_5"><a
+                        data-toggle="dropdown" class="nav-link dropdown-toggle" href="/schedule" title="电影排片">电影排片<b
+                        class="caret"></b></a>
+                    <ul class="site_menu_children dropdown-menu">
+                        <li class="nav-item site_menu_list site_menu_list_0 site_menu_list_index_sub_1 first"><a
+                                class="dropdown-item" href="/boxoffice/wangpiao/schedule/20171213" title="网票排片">网票排片</a>
+                        </li>
+                        <li class="nav-item site_menu_list site_menu_list_1 site_menu_list_index_sub_2"><a
+                                class="dropdown-item" href="/boxoffice/hipiao/schedule/20171213" title="哈票排片">哈票排片</a>
+                        </li>
+                        <li class="nav-item site_menu_list site_menu_list_2 site_menu_list_index_sub_3"><a
+                                class="dropdown-item" href="/boxoffice/gewara/schedule/20171213" title="格瓦拉排片">格瓦拉排片</a>
+                        </li>
+                        <li class="nav-item site_menu_list site_menu_list_3 site_menu_list_index_sub_4"><a
+                                class="dropdown-item" href="/boxoffice/wanda/schedule/20171213" title="万达排片">万达排片</a>
+                        </li>
+                        <li class="nav-item site_menu_list site_menu_list_4 site_menu_list_index_sub_5"><a
+                                class="dropdown-item" href="/boxoffice/jinyi/schedule/20171213" title="金逸排片">金逸排片</a>
+                        </li>
+                        <li class="nav-item site_menu_list site_menu_list_5 site_menu_list_index_sub_6"><a
+                                class="dropdown-item" href="/boxoffice/tpiao/schedule/20171213" title="淘电影排片">淘电影排片</a>
+                        </li>
+                        <li class="nav-item site_menu_list site_menu_list_6 site_menu_list_index_sub_7 last"><a
+                                class="dropdown-item" href="/boxoffice/xingmei/schedule/20171213" title="星美排片">星美排片</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown site_menu_list site_menu_list_user site_menu_list_index_6"><a
+                        data-toggle="dropdown" class="nav-link dropdown-toggle" href="/user/login" title="登录">登录<b
+                        class="caret"></b></a>
+                    <ul class="site_menu_children dropdown-menu">
+                        <li class="nav-item site_menu_list site_menu_list_1 site_menu_list_index_sub_1 first"><a
+                                class="dropdown-item" href="/user/register" title="注册">注册</a></li>
+                        <li class="nav-item site_menu_list site_menu_list_0 site_menu_list_index_sub_2"><a
+                                class="dropdown-item" href="/user/login" title="登录">登录</a></li>
+                        <li class="nav-item site_menu_list site_menu_list_2 site_menu_list_index_sub_3 last"><a
+                                class="dropdown-item" href="/user/pass" title="找回密码">找回密码</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item site_menu_list site_menu_list_user site_menu_list_index_7 last"><a class="nav-link"
+                                                                                                       href="/user/register"
+                                                                                                       title="注册">注册</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<div id="main" class="container">
+    <div class="row">
+
+
+        <div id="content" class="">
+            <ul id="tabs" class="nav nav-tabs">
+                <li><a href="/daily" title="每日票房">每日票房</a></li>
+                <li><a href="/alltime/2017" title="总票房" class="active">总票房</a></li>
+                <li><a href="/daily/wangpiao" title="网票排行">网票排行</a></li>
+            </ul>
+            <div class="front_movie_box_office_year_link"><a href="/alltime" title="全部电影">全部电影</a><a
+                    href="/alltime/play" title="正在热映">正在热映</a><a href="/alltime/2017" title="2017"
+                                                                 class="active">2017</a><a href="/alltime/2016"
+                                                                                           title="2016">2016</a><a
+                    href="/alltime/2015" title="2015">2015</a><a href="/alltime/2014" title="2014">2014</a><a
+                    href="/alltime/2013" title="2013">2013</a><a href="/alltime/2012" title="2012">2012</a><a
+                    href="/alltime/2011" title="2011">2011</a><a href="/alltime/2010" title="2010">2010</a><a
+                    href="/alltime/2009" title="2009">2009</a><a href="/alltime/2008" title="2008">2008</a><a
+                    href="/alltime/2007" title="2007">2007</a><a href="/alltime/2006" title="2006">2006</a><a
+                    href="/alltime/2005" title="2005">2005</a><a href="/alltime/2004" title="2004">2004</a><a
+                    href="/alltime/2003" title="2003">2003</a><a href="/alltime/2002" title="2002">2002</a><a
+                    href="/alltime/2001" title="2001">2001</a><a href="/alltime/2000" title="2000">2000</a><a
+                    href="/alltime/1999" title="1999">1999</a><a href="/alltime/1998" title="1998">1998</a><a
+                    href="/alltime/1997" title="1997">1997</a><a href="/alltime/1996" title="1996">1996</a><a
+                    href="/alltime/1995" title="1995">1995</a><a href="/alltime/1994" title="1994">1994</a><a
+                    href="/alltime/1993" title="1993">1993</a><a href="/alltime/1992" title="1992">1992</a><a
+                    href="/alltime/1991" title="1991">1991</a><a href="/alltime/1990" title="1990">1990</a><a
+                    href="/alltime/1989" title="1989">1989</a><a href="/alltime/1988" title="1988">1988</a><a
+                    href="/alltime/1987" title="1987">1987</a><a href="/alltime/1986" title="1986">1986</a><a
+                    href="/alltime/1985" title="1985">1985</a><a href="/alltime/1984" title="1984">1984</a><a
+                    href="/alltime/1983" title="1983">1983</a></div>
+            <div class="front_movie_box_office_summary_help"><h3>2017年内地电影票房总排行榜</h3></div>
+            <div class="table-responsive">
+                <table class="center_table movie_box_office_stats_table table table-bordered table-condensed">
+                    <thead>
+                    <tr>
+                        <th>年度排名</th>
+                        <th>历史排名</th>
+                        <th>电影名称</th>
+                        <th>总票房</th>
+                        <th>总人次</th>
+                        <th>总场次</th>
+                        <th>上映年份</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr class="odd">
+                        <td>1</td>
+                        <td>1</td>
+                        <td><a href="/film/5331" title="战狼2">战狼2</a></td>
+                        <td><img
+                                src="http://img.58921.com/sites/all/movie/files/protec/69687b70d8626093002d7f5ecb9aae6a.png"
+                                alt=""/></td>
+                        <td>--</td>
+                        <td>--</td>
+                        <td>2017</td>
+                        <td><a href="/boxoffice/history/5331" title="数据纠错">数据纠错</a></td>
+                    </tr>
+                    <tr class="even">
+                        <td>2</td>
+                        <td>3</td>
+                        <td><a href="/film/6411" title="速度与激情8">速度与激情8</a></td>
+                        <td><img
+                                src="http://img.58921.com/sites/all/movie/files/protec/06833907d846e606f6a5a321eb7a6913.png"
+                                alt=""/></td>
+                        <td>--</td>
+                        <td>--</td>
+                        <td>2017</td>
+                        <td><a href="/boxoffice/history/6411" title="数据纠错">数据纠错</a></td>
+                    </tr>
+                    <tr class="odd">
+                        <td>0</td>
+                        <td>0</td>
+                        <td><a href="/film/6530" title="羞羞的铁拳">羞羞的铁拳</a></td>
+                        <td><img
+                                src="http://img.58921.com/sites/all/movie/files/protec/0a988b6499e10c8aef568281d31cef60.png"
+                                alt=""/></td>
+                        <td>--</td>
+                        <td>--</td>
+                        <td>2017</td>
+                        <td><a href="/boxoffice/history/6530" title="数据纠错">数据纠错</a></td>
+                    </tr>
+                    <tr class="even">
+                        <td>4</td>
+                        <td>8</td>
+                        <td><a href="/film/6063" title="功夫瑜伽">功夫瑜伽</a></td>
+                        <td><img
+                                src="http://img.58921.com/sites/all/movie/files/protec/dcde3fbc85c7d5a1a4ba2bcc8887f96e.png"
+                                alt=""/></td>
+                        <td>--</td>
+                        <td>--</td>
+                        <td>2017</td>
+                        <td><a href="/boxoffice/history/6063" title="数据纠错">数据纠错</a></td>
+                    </tr>
+                    <tr class="odd">
+                        <td>5</td>
+                        <td>10</td>
+                        <td><a href="/film/6030" title="西游伏妖篇">西游伏妖篇</a></td>
+                        <td><img
+                                src="http://img.58921.com/sites/all/movie/files/protec/a4766f9ec145e9c7f77d51f3493cb6c1.png"
+                                alt=""/></td>
+                        <td>--</td>
+                        <td>--</td>
+                        <td>2017</td>
+                        <td><a href="/boxoffice/history/6030" title="数据纠错">数据纠错</a></td>
+                    </tr>
+                    <tr class="even">
+                        <td>6</td>
+                        <td>12</td>
+                        <td><a href="/film/6482" title="变形金刚5：最后的骑士">变形金刚5：最后的骑士</a></td>
+                        <td><img
+                                src="http://img.58921.com/sites/all/movie/files/protec/7e1d14b9532ae4b7af52d236d798b748.png"
+                                alt=""/></td>
+                        <td>--</td>
+                        <td>--</td>
+                        <td>2017</td>
+                        <td><a href="/boxoffice/history/6482" title="数据纠错">数据纠错</a></td>
+                    </tr>
+                    <tr class="odd">
+                        <td>7</td>
+                        <td>18</td>
+                        <td><a href="/film/6425" title="摔跤吧！爸爸">摔跤吧！爸爸</a></td>
+                        <td><img
+                                src="http://img.58921.com/sites/all/movie/files/protec/809e53f33edb9fe9e11f061491743ea2.png"
+                                alt=""/></td>
+                        <td>--</td>
+                        <td>--</td>
+                        <td>2017</td>
+                        <td><a href="/boxoffice/history/6425" title="数据纠错">数据纠错</a></td>
+                    </tr>
+                    <tr class="even">
+                        <td>8</td>
+                        <td>24</td>
+                        <td><a href="/film/6486" title="加勒比海盗5：死无对证">加勒比海盗5：死无对证</a></td>
+                        <td><img
+                                src="http://img.58921.com/sites/all/movie/files/protec/65b8bac36c54419ce92c270a0c31d540.png"
+                                alt=""/></td>
+                        <td>--</td>
+                        <td>--</td>
+                        <td>2017</td>
+                        <td><a href="/boxoffice/history/6486" title="数据纠错">数据纠错</a></td>
+                    </tr>
+                    <tr class="odd">
+                        <td>9</td>
+                        <td>27</td>
+                        <td><a href="/film/6381" title="金刚：骷髅岛">金刚：骷髅岛</a></td>
+                        <td><img
+                                src="http://img.58921.com/sites/all/movie/files/protec/65368c2f86c790dae9c25cf2fd29af4e.png"
+                                alt=""/></td>
+                        <td>--</td>
+                        <td>--</td>
+                        <td>2017</td>
+                        <td><a href="/boxoffice/history/6381" title="数据纠错">数据纠错</a></td>
+                    </tr>
+                    <tr class="even">
+                        <td>10</td>
+                        <td>29</td>
+                        <td><a href="/film/6189" title="极限特工：终极回归">极限特工：终极回归</a></td>
+                        <td><img
+                                src="http://img.58921.com/sites/all/movie/files/protec/84badaf6444b96b83086b2542d1d51e1.png"
+                                alt=""/></td>
+                        <td>--</td>
+                        <td>--</td>
+                        <td>2017</td>
+                        <td><a href="/boxoffice/history/6189" title="数据纠错">数据纠错</a></td>
+                    </tr>
+                    <tr class="odd">
+                        <td>11</td>
+                        <td>31</td>
+                        <td><a href="/film/6205" title="生化危机6：终章">生化危机6：终章</a></td>
+                        <td><img
+                                src="http://img.58921.com/sites/all/movie/files/protec/ff9135fc478c0a830117aa8657e9e964.png"
+                                alt=""/></td>
+                        <td>--</td>
+                        <td>--</td>
+                        <td>2017</td>
+                        <td><a href="/boxoffice/history/6205" title="数据纠错">数据纠错</a></td>
+                    </tr>
+                    <tr class="even">
+                        <td>0</td>
+                        <td>0</td>
+                        <td><a href="/film/6174" title="乘风破浪">乘风破浪</a></td>
+                        <td><img
+                                src="http://img.58921.com/sites/all/movie/files/protec/38bdc26ad916d0a4ce2fd20fafdf4cb3.png"
+                                alt=""/></td>
+                        <td>--</td>
+                        <td>--</td>
+                        <td>2017</td>
+                        <td><a href="/boxoffice/history/6174" title="数据纠错">数据纠错</a></td>
+                    </tr>
+                    <tr class="odd">
+                        <td>13</td>
+                        <td>35</td>
+                        <td><a href="/film/5569" title="神偷奶爸3">神偷奶爸3</a></td>
+                        <td><img
+                                src="http://img.58921.com/sites/all/movie/files/protec/bb14ce3691c2afccac9f520009a24026.png"
+                                alt=""/></td>
+                        <td>--</td>
+                        <td>--</td>
+                        <td>2017</td>
+                        <td><a href="/boxoffice/history/5569" title="数据纠错">数据纠错</a></td>
+                    </tr>
+                    <tr class="even">
+                        <td>0</td>
+                        <td>0</td>
+                        <td><a href="/film/7296" title="寻梦环游记">寻梦环游记</a></td>
+                        <td><img
+                                src="http://img.58921.com/sites/all/movie/files/protec/f1337e906b391fe38a70b1e0b854dc21.png"
+                                alt=""/></td>
+                        <td>--</td>
+                        <td>--</td>
+                        <td>2017</td>
+                        <td><a href="/boxoffice/history/7296" title="数据纠错">数据纠错</a></td>
+                    </tr>
+                    <tr class="odd">
+                        <td>14</td>
+                        <td>46</td>
+                        <td><a href="/film/3880" title="智取威虎山">智取威虎山</a></td>
+                        <td><img
+                                src="http://img.58921.com/sites/all/movie/files/protec/ef4fefa85f1df32fcb471389fd150163.png"
+                                alt=""/></td>
+                        <td>--</td>
+                        <td>--</td>
+                        <td>2017</td>
+                        <td><a href="/boxoffice/history/3880" title="数据纠错">数据纠错</a></td>
+                    </tr>
+                    <tr class="even">
+                        <td>15</td>
+                        <td>55</td>
+                        <td><a href="/film/6558" title="蜘蛛侠：英雄归来">蜘蛛侠：英雄归来</a></td>
+                        <td><img
+                                src="http://img.58921.com/sites/all/movie/files/protec/8b7d9f139ecebf06993afa7a45c9e13f.png"
+                                alt=""/></td>
+                        <td>--</td>
+                        <td>--</td>
+                        <td>2017</td>
+                        <td><a href="/boxoffice/history/6558" title="数据纠错">数据纠错</a></td>
+                    </tr>
+                    <tr class="odd">
+                        <td>16</td>
+                        <td>57</td>
+                        <td><a href="/film/5344" title="大闹天竺">大闹天竺</a></td>
+                        <td><img
+                                src="http://img.58921.com/sites/all/movie/files/protec/84d779aabcd11a5814ed0383f89dffe2.png"
+                                alt=""/></td>
+                        <td>--</td>
+                        <td>--</td>
+                        <td>2017</td>
+                        <td><a href="/boxoffice/history/5344" title="数据纠错">数据纠错</a></td>
+                    </tr>
+                    <tr class="even">
+                        <td>0</td>
+                        <td>0</td>
+                        <td><a href="/film/6989" title="雷神3：诸神黄昏">雷神3：诸神黄昏</a></td>
+                        <td><img
+                                src="http://img.58921.com/sites/all/movie/files/protec/4b921dc4b1de9acbf2223f65d8f265cf.png"
+                                alt=""/></td>
+                        <td>--</td>
+                        <td>--</td>
+                        <td>2017</td>
+                        <td><a href="/boxoffice/history/6989" title="数据纠错">数据纠错</a></td>
+                    </tr>
+                    <tr class="odd">
+                        <td>17</td>
+                        <td>61</td>
+                        <td><a href="/film/6185" title="猩球崛起：终极之战">猩球崛起：终极之战</a></td>
+                        <td><img
+                                src="http://img.58921.com/sites/all/movie/files/protec/03632b31714501182b755fe290568e51.png"
+                                alt=""/></td>
+                        <td>--</td>
+                        <td>--</td>
+                        <td>2017</td>
+                        <td><a href="/boxoffice/history/6185" title="数据纠错">数据纠错</a></td>
+                    </tr>
+                    <tr class="even">
+                        <td>18</td>
+                        <td>62</td>
+                        <td><a href="/film/6382" title="金刚狼3：殊死一战">金刚狼3：殊死一战</a></td>
+                        <td><img
+                                src="http://img.58921.com/sites/all/movie/files/protec/d69b9a40dd583df60ef8f0c757ada09d.png"
+                                alt=""/></td>
+                        <td>--</td>
+                        <td>--</td>
+                        <td>2017</td>
+                        <td><a href="/boxoffice/history/6382" title="数据纠错">数据纠错</a></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="item-list item_pager">
+                <ul class="pager">
+                    <li class="pager_sum first"><span>总记录：<span class="pager_number">398</span></span></li>
+                    <li class="pager_count"><span>页次：<span class="pager_number">1/20</span></span></li>
+                    <li class="pager_current"><span>1</span></li>
+                    <li class="pager_item"><a href="/alltime/2017?page=1" title="转到第 2 页" class="active">2</a></li>
+                    <li class="pager_item"><a href="/alltime/2017?page=2" title="转到第 3 页" class="active">3</a></li>
+                    <li class="pager_item"><a href="/alltime/2017?page=3" title="转到第 4 页" class="active">4</a></li>
+                    <li class="pager_item"><a href="/alltime/2017?page=4" title="转到第 5 页" class="active">5</a></li>
+                    <li class="pager_item"><a href="/alltime/2017?page=5" title="转到第 6 页" class="active">6</a></li>
+                    <li class="pager_item"><a href="/alltime/2017?page=6" title="转到第 7 页" class="active">7</a></li>
+                    <li class="pager_ellipsis"><span>…</span></li>
+                    <li class="pager_next"><a href="/alltime/2017?page=1" title="到下一页" class="active">下页 ›</a></li>
+                    <li class="pager_last"><a href="/alltime/2017?page=19" title="到最后一页" class="active">末页 »</a></li>
+                    <li class="pager_go_input last"><span>转到第 <input type="text" value="1" alt="1"
+                                                                     class="form_text pager_form_go_input"
+                                                                     id="pager_go_input_1"/>  页</span></li>
+                </ul>
+            </div>
+            <p class="right">该数据仅供参考，若发现数据有误，请点击数据纠错进行修改操作。</p></div>
+
+    </div>
+</div>
+
+
+<div id="footer">
+    <div class="container">
+        <script type="text/javascript">
+            var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+            document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fe71d0b417f75981e161a94970becbb1b' type='text/javascript'%3E%3C/script%3E"));
+        </script>
+
+        <p>
+            <a href="http://58921.com/schedule" title="全国电影排片">全国电影排片</a> |
+            <a href="http://58921.com/daily/wangpiao" title="网票排行榜">网票排行榜</a> |
+            <a href="http://58921.com/alltime" title="票房排行榜">票房排行榜</a> |
+            <a href="http://58921.com/boxoffice/hipiao" title="哈票统计">哈票统计</a> | <a
+                href="http://58921.com/boxoffice/wangpiao" title="网票统计">网票统计</a> | <a
+                href="http://58921.com/boxoffice/wanda" title="万达票房统计">万达票房统计</a> | <a href="http://58921.com/alltime"
+                                                                                       title="票房排行榜">票房排行榜</a> |
+            <a href="/links" title="电影票房数据库友情链接">友情链接</a>
+        </p>
+        <p>
+            <a href="http://pp.58921.com/" title="全国电影排片数据库">排片数据库</a> |
+            <a href="/group/boxoffice" title="电影票房话题">电影话题</a> |
+            <a href="/group/manage" title="电影票房数据库站务专区">站务专区</a>
+            |
+            <a href="/film/new" title="正在上映电影">正在上映电影</a>
+            |
+            <a href="/film/coming" title="即将上映电影">即将上映电影</a>
+            |
+            <a href="/group/node/2336" title="激活帐号" style="color:#f00;">帐号无法激活？</a>
+        </p>
+        <p>联系邮箱：service@didaio.com 微信公众号：<a href="/weixin_follow.html" title="关注电影票房数据库微信公众号">滴答随行</a></p>
+        <p>京ICP备12038111号</p>
+
+    </div>
+</div>
+
+
+</body>
+</html>

@@ -6,6 +6,7 @@
 # See: http://doc.scrapy.org/en/latest/topics/item-pipeline.html
 import psycopg2
 import logging
+import pymongo
 
 
 class CodePipeline(object):
@@ -40,6 +41,34 @@ class CodePipeline(object):
             except psycopg2.Error:
                 self.logger.exception('Database error')
             self.client.commit()
+        return item
+        #
+        # def process_item(self, item, spider):
+        #     return item
+
+
+class FilmPipeline(object):
+    def __init__(self, mongo_dsn):
+        self.mongo_dsn = mongo_dsn
+        self.logger = logging.getLogger()
+
+    @classmethod
+    def from_crawler(cls, crawler):
+        return cls(
+            mongo_dsn=crawler.settings.get('MONGODB_DSN'),
+        )
+
+    def open_spider(self, spider):
+        self.client = pymongo.MongoClient(self.mongo_dsn)
+        self.db = self.client.filminfo
+
+    def close_spider(self, spider):
+        self.client.close()
+
+    def process_item(self, item, spider):
+        self.logger.warning(item)
+        # todo insert_one mongo
+        self.db.film_box_office.update({"film_name": item["film_name"]}, {"$set": item}, upsert=True)
         return item
         #
         # def process_item(self, item, spider):

@@ -150,3 +150,6 @@ else:
 
 # psql的配置
 POSTGRESQL_DSN = "dbname=app user=postgres password=123456 host=120.24.229.18 port=5432"
+
+# mongodb的配置
+MONGODB_DSN = "mongodb://172.16.1.143:27017"

@@ -13,3 +13,10 @@ class CodeItem(scrapy.Item):
     sec_code = scrapy.Field()
     sec_name = scrapy.Field()
     # pass
+
+class FilmOfficeItem(scrapy.Item):
+    # define the fields for your item here like:
+    film_name = scrapy.Field()
+    film_box_office = scrapy.Field()
+    film_box_office_img = scrapy.Field()
+    film_year = scrapy.Field()
