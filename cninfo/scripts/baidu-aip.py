@@ -19,7 +19,6 @@ aipOcr = AipOcr(APP_ID, API_KEY, SECRET_KEY)
 
 # img_src = "http://img.58921.com/sites/all/movie/files/protec/90c2429118563ab2784b91a7bf7e8f32.png"
 # response = requests.get(img_src)
-# img = BytesIO(response.content)
 
 filePath = "./img/t.png"
 def get_file_content(filePath):
