@@ -20,3 +20,6 @@ class FilmOfficeItem(scrapy.Item):
     film_box_office = scrapy.Field()
     film_box_office_img = scrapy.Field()
     film_year = scrapy.Field()
+    cb_box_office = scrapy.Field()
+    film_eng_name = scrapy.Field()
+    film_area = scrapy.Field()
