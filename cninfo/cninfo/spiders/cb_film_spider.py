@@ -11,7 +11,7 @@ import urlparse
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
-
+# 中国票房 数据
 class CbFilmSpider(scrapy.Spider):
     name = "cbfilm"
     page = 1
