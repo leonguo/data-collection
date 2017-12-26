@@ -55,6 +55,7 @@ class IndexSpider(scrapy.Spider):
             loader.add_value("sec_name", row["secName"])
             loader.add_value("org_id", row["orgId"])
             yield loader.load_item()
+            rowcount = rowcount + 1
 
         # 批量插入数据
         if rowcount and rowcount > 0:
