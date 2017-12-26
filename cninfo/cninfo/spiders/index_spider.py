@@ -39,7 +39,7 @@ class IndexSpider(scrapy.Spider):
     def parse(self, response):
         logger = logging.getLogger()
         logger.warn("response: poster index page[%s] crawl status: %d", response.url, response.status)
-        json_body = json.loads(unicode(response.body, "utf-8"))
+        json_body = json.loads(response.body)
         has_more = json_body["hasMore"]
         rowcount = 0
         for row in json_body["announcements"]:

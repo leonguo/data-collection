@@ -139,7 +139,7 @@ class CbFilmSpider(scrapy.Spider):
             url_query = parse.parse_qs(cur_url.query)
             area = url_query["area"][0]
             area_name = self.area_list[area]
-            json_body = json.loads(unicode(response.body, "utf-8"))
+            json_body = json.loads(response.body)
             t_page = json_body.get("tPage", None)
             if json_body.get("pData", None):
                 for row in json_body["pData"]:
