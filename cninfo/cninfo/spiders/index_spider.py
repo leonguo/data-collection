@@ -43,19 +43,21 @@ class IndexSpider(scrapy.Spider):
         has_more = json_body["hasMore"]
         rowcount = 0
         for row in json_body["announcements"]:
-            loader = ItemLoader(item=AnnouncementItem())
-            loader.default_output_processor = scrapy.loader.processors.TakeFirst()
-            loader.add_value("announcement_id", row["announcementId"])
-            loader.add_value("announcement_title", row["announcementTitle"])
-            loader.add_value("announcement_time", datetime.fromtimestamp(math.floor(row["announcementTime"] / 1000)))
-            loader.add_value("adjunct_url", row["adjunctUrl"])
-            loader.add_value("adjunct_size", row["adjunctSize"])
-            loader.add_value("adjunct_type", row["adjunctType"])
-            loader.add_value("sec_code", row["secCode"])
-            loader.add_value("sec_name", row["secName"])
-            loader.add_value("org_id", row["orgId"])
-            yield loader.load_item()
-            rowcount = rowcount + 1
+            if row.get("announcementId", None):
+                loader = ItemLoader(item=AnnouncementItem())
+                loader.default_output_processor = scrapy.loader.processors.TakeFirst()
+                loader.add_value("announcement_id", row["announcementId"])
+                loader.add_value("announcement_title", row["announcementTitle"])
+                loader.add_value("announcement_time",
+                                 datetime.fromtimestamp(math.floor(row["announcementTime"] / 1000)))
+                loader.add_value("adjunct_url", row["adjunctUrl"])
+                loader.add_value("adjunct_size", row["adjunctSize"])
+                loader.add_value("adjunct_type", row["adjunctType"])
+                loader.add_value("sec_code", row["secCode"])
+                loader.add_value("sec_name", row["secName"])
+                loader.add_value("org_id", row["orgId"])
+                yield loader.load_item()
+                rowcount = rowcount + 1
 
         # 批量插入数据
         if rowcount and rowcount > 0:
