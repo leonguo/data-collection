@@ -3,15 +3,23 @@
 import scrapy
 import json
 import logging
-import psycopg2
 import math
 from datetime import date, datetime
+from ..items import AnnouncementItem
+from scrapy.loader import ItemLoader
+
 
 # 最新公告爬取
 
 class IndexSpider(scrapy.Spider):
     name = "index"
     page = 1
+
+    custom_settings = {
+        'ITEM_PIPELINES': {
+            'cninfo.pipelines.AnnouncementPipeline': 300,
+        }
+    }
 
     def get_request_body(self, num):
         today = datetime.today()
@@ -31,45 +39,27 @@ class IndexSpider(scrapy.Spider):
     def parse(self, response):
         logger = logging.getLogger()
         logger.warn("response: poster index page[%s] crawl status: %d", response.url, response.status)
-        # logger.warn(unicode(response.body, "utf-8"))
         json_body = json.loads(unicode(response.body, "utf-8"))
-        # totalRecordNum = jsonBody["totalRecordNum"]
         has_more = json_body["hasMore"]
-        data = []
         rowcount = 0
         for row in json_body["announcements"]:
-            ann = (
-                row["announcementId"],
-                row["announcementTitle"],
-                datetime.fromtimestamp(math.floor(row["announcementTime"] / 1000)),
-                row["adjunctUrl"],
-                row["adjunctSize"],
-                row["adjunctType"],
-                row["secCode"],
-                row["secName"],
-                row["orgId"]
-            )
-            data.append(ann)
+            loader = ItemLoader(item=AnnouncementItem())
+            loader.default_output_processor = scrapy.loader.processors.TakeFirst()
+            loader.add_value("announcement_id", row["announcementId"])
+            loader.add_value("announcement_title", row["announcementTitle"])
+            loader.add_value("announcement_time", datetime.fromtimestamp(math.floor(row["announcementTime"] / 1000)))
+            loader.add_value("adjunct_url", row["adjunctUrl"])
+            loader.add_value("adjunct_size", row["adjunctSize"])
+            loader.add_value("adjunct_type", row["adjunctType"])
+            loader.add_value("sec_code", row["secCode"])
+            loader.add_value("sec_name", row["secName"])
+            loader.add_value("org_id", row["orgId"])
+            yield loader.load_item()
+
         # 批量插入数据
-        conn = psycopg2.connect(self.settings.get('POSTGRESQL_DSN'))
-        cur = conn.cursor()
-        query_data = ','.join(cur.mogrify('(%s,%s,%s,%s,%s,%s,%s,%s,%s)', row) for row in data)
-        # announcement_id,announcement_title,announcement_time,adjunct_url,adjunct_size,adjunct_type,sec_code,sec_name,org_id
-        insert_q = "INSERT INTO cninfo_announcement(announcement_id,announcement_title,announcement_time,adjunct_url,adjunct_size,adjunct_type,sec_code,sec_name,org_id) VALUES {0} ON CONFLICT DO NOTHING;".format(
-            query_data)
-        logger.warn(unicode(insert_q, "utf-8"))
-        try:
-            cur.execute(insert_q)
-            rowcount = cur.rowcount
-        except psycopg2.Error:
-            self.logger.exception('Database error')
         if rowcount and rowcount > 0:
             if has_more:
                 self.page += 1
                 print(self.page)
                 yield scrapy.FormRequest(url=response.url, callback=self.parse,
                                          formdata=self.get_request_body(self.page))
-
-        conn.commit()
-        cur.close()
-        conn.close()

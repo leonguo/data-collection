@@ -73,3 +73,27 @@ class FilmPipeline(object):
         #
         # def process_item(self, item, spider):
         #     return item
+
+# 股票公告信息
+class AnnouncementPipeline(object):
+    def __init__(self, mongo_dsn):
+        self.mongo_dsn = mongo_dsn
+        self.logger = logging.getLogger()
+
+    @classmethod
+    def from_crawler(cls, crawler):
+        return cls(
+            mongo_dsn=crawler.settings.get('MONGODB_DSN'),
+        )
+
+    def open_spider(self, spider):
+        self.client = pymongo.MongoClient(self.mongo_dsn)
+        self.db = self.client.shares
+
+    def close_spider(self, spider):
+        self.client.close()
+
+    def process_item(self, item, spider):
+        self.logger.warning(item)
+        self.db.announcement.update({"announcementId": item["announcementId"]}, {"$set": item}, upsert=True)
+        return item
