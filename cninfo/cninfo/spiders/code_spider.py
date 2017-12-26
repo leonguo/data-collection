@@ -7,7 +7,9 @@ from datetime import date, datetime
 
 from ..items import CodeItem
 from scrapy.loader import ItemLoader
-import sys
+
+# reload(sys)
+# sys.setdefaultencoding('utf-8')
 
 
 # 股票代码爬虫
