@@ -95,5 +95,5 @@ class AnnouncementPipeline(object):
 
     def process_item(self, item, spider):
         self.logger.warning(item)
-        self.db.announcement.update({"announcementId": item["announcementId"]}, {"$set": item}, upsert=True)
+        self.db.announcement.update({"announcement_id": item["announcement_id"]}, {"$set": item}, upsert=True)
         return item
