@@ -8,9 +8,6 @@ from ..items import FilmOfficeItem
 from scrapy.loader import ItemLoader
 from urllib import parse
 
-reload(sys)
-sys.setdefaultencoding('utf-8')
-
 # 中国票房 数据
 class CbFilmSpider(scrapy.Spider):
     name = "cbfilm"

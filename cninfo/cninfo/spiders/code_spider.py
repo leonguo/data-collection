@@ -9,9 +9,6 @@ from ..items import CodeItem
 from scrapy.loader import ItemLoader
 import sys
 
-reload(sys)
-sys.setdefaultencoding('utf-8')
-
 
 # 股票代码爬虫
 class CodeSpider(scrapy.Spider):

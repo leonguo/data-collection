@@ -10,8 +10,8 @@ import sys
 from ..items import FilmOfficeItem
 from scrapy.loader import ItemLoader
 
-reload(sys)
-sys.setdefaultencoding('utf-8')
+# reload(sys)
+# sys.setdefaultencoding('utf-8')
 
 
 class FilmSpider(scrapy.Spider):
