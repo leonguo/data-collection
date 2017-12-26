@@ -74,6 +74,7 @@ class FilmPipeline(object):
         # def process_item(self, item, spider):
         #     return item
 
+
 # 股票公告信息
 class AnnouncementPipeline(object):
     def __init__(self, mongo_dsn):
@@ -95,5 +96,9 @@ class AnnouncementPipeline(object):
 
     def process_item(self, item, spider):
         self.logger.warning(item)
-        self.db.announcement.update({"announcement_id": item["announcement_id"]}, {"$set": item}, upsert=True)
+        result = self.db.announcement.insert_one(item)
+        if result and result.inserted_id:
+            print("success")
+        else:
+            print("fail")
         return item
