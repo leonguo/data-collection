@@ -7,7 +7,7 @@
 import psycopg2
 import logging
 import pymongo
-
+from scrapy.exceptions import CloseSpider
 
 class CodePipeline(object):
     def __init__(self, psql_dsn):
@@ -101,4 +101,5 @@ class AnnouncementPipeline(object):
             print("success")
         else:
             print("fail")
+            raise CloseSpider("error")
         return item
