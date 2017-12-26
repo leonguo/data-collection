@@ -6,7 +6,14 @@ from datetime import date, datetime
 import sys
 from ..items import FilmOfficeItem
 from scrapy.loader import ItemLoader
-from urllib import parse
+
+try:
+    # Python 3.x
+    from urllib import parse
+except ImportError:
+    # Python 2.x
+    import urllib
+
 
 # 中国票房 数据
 class CbFilmSpider(scrapy.Spider):

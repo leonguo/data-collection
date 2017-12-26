@@ -87,7 +87,7 @@ class AnnouncementPipeline(object):
         )
 
     def open_spider(self, spider):
-        self.client = pymongo.MongoClient(self.mongo_dsn)
+        self.client = pymongo.MongoClient(self.mongo_dsn, serverSelectionTimeoutMS=3)
         self.db = self.client.shares
 
     def close_spider(self, spider):
