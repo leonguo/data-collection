@@ -6,7 +6,7 @@ from datetime import date, datetime
 import sys
 from ..items import FilmOfficeItem
 from scrapy.loader import ItemLoader
-import urlparse
+from urllib import parse
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
@@ -138,8 +138,8 @@ class CbFilmSpider(scrapy.Spider):
     def parse(self, response):
         self.logger.warning("response: film page url [%s] crawl status: %d", response.url, response.status)
         if response.status == 200:
-            cur_url = urlparse.urlparse(response.url)
-            url_query = urlparse.parse_qs(cur_url.query)
+            cur_url = parse.urlparse(response.url)
+            url_query = parse.parse_qs(cur_url.query)
             area = url_query["area"][0]
             area_name = self.area_list[area]
             json_body = json.loads(unicode(response.body, "utf-8"))
