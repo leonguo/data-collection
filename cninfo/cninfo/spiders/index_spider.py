@@ -41,7 +41,6 @@ class IndexSpider(scrapy.Spider):
         logger.warn("response: poster index page[%s] crawl status: %d", response.url, response.status)
         json_body = json.loads(response.body)
         has_more = json_body["hasMore"]
-        rowcount = 0
         for row in json_body["announcements"]:
             if row.get("announcementId", None):
                 loader = ItemLoader(item=AnnouncementItem())
@@ -57,12 +56,10 @@ class IndexSpider(scrapy.Spider):
                 loader.add_value("sec_name", row["secName"])
                 loader.add_value("org_id", row["orgId"])
                 yield loader.load_item()
-                rowcount = rowcount + 1
 
         # 批量插入数据
-        if rowcount and rowcount > 0:
-            if has_more:
-                self.page += 1
-                print(self.page)
-                yield scrapy.FormRequest(url=response.url, callback=self.parse,
-                                         formdata=self.get_request_body(self.page))
+        if has_more:
+            self.page += 1
+            print(self.page)
+            yield scrapy.FormRequest(url=response.url, callback=self.parse,
+                                     formdata=self.get_request_body(self.page))
