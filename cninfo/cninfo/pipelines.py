@@ -98,7 +98,11 @@ class AnnouncementPipeline(object):
     def process_item(self, item, spider):
         self.logger.warning(item)
         try:
-            self.db.announcement.insert_one(dict(item))
+            result = self.db.announcement.insert_one(dict(item))
+            if result and result.inserted_id:
+                self.logger.warning("success id: {0}".format(result.inserted_id))
+            else:
+                raise CloseSpider("insert error")
         except:
             raise CloseSpider("insert error")
         return item
