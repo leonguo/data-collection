@@ -9,6 +9,7 @@ import logging
 import pymongo
 from scrapy.exceptions import CloseSpider
 
+
 class CodePipeline(object):
     def __init__(self, psql_dsn):
         self.psql_dsn = psql_dsn
@@ -96,10 +97,8 @@ class AnnouncementPipeline(object):
 
     def process_item(self, item, spider):
         self.logger.warning(item)
-        result = self.db.announcement.insert_one(item)
-        if result and result.inserted_id:
-            print("success")
-        else:
-            print("fail")
-            raise CloseSpider("error")
+        try:
+            self.db.announcement.insert_one(dict(item))
+        except:
+            raise CloseSpider("insert error")
         return item
