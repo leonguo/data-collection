@@ -153,3 +153,9 @@ POSTGRESQL_DSN = "dbname=app user=postgres password=123456 host=120.24.229.18 po
 
 # mongodb的配置
 MONGODB_DSN = "mongodb://127.0.0.1:27017"
+
+CONCURRENT_REQUESTS_PER_IP = 5
+
+DOWNLOAD_DELAY = 1
+
+CLOSESPIDER_TIMEOUT = 1
