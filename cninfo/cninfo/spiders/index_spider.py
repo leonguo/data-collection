@@ -26,7 +26,6 @@ class IndexSpider(scrapy.Spider):
         oneday = datetime.timedelta(days=1)
         tommorrow = today + oneday
         date = '%s~%s' % (today.strftime('%Y-%m-%d'),tommorrow.strftime('%Y-%m-%d'))
-        print date
         return {"seDate": date, "tabName": "fulltext",
                 "sortName": "time",
                 "sortType": "desc", "column": "szse", "pageNum": str(num),
