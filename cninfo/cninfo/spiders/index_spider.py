@@ -4,7 +4,7 @@ import scrapy
 import json
 import logging
 import math
-from datetime import date, datetime
+import datetime
 from ..items import AnnouncementItem
 from scrapy.loader import ItemLoader
 
@@ -22,8 +22,12 @@ class IndexSpider(scrapy.Spider):
     }
 
     def get_request_body(self, num):
-        today = datetime.today()
-        return {"seDate": today.strftime('%Y-%m-%d'), "tabName": "fulltext",
+        today = datetime.datetime.today()
+        oneday = datetime.timedelta(days=1)
+        tommorrow = today + oneday
+        date = '%s~%s' % (today.strftime('%Y-%m-%d'),tommorrow.strftime('%Y-%m-%d'))
+        print date
+        return {"seDate": date, "tabName": "fulltext",
                 "sortName": "time",
                 "sortType": "desc", "column": "szse", "pageNum": str(num),
                 "pageSize": "30"}
@@ -49,7 +53,7 @@ class IndexSpider(scrapy.Spider):
                 loader.add_value("announcement_id", row["announcementId"])
                 loader.add_value("announcement_title", row["announcementTitle"])
                 loader.add_value("announcement_time",
-                                 datetime.fromtimestamp(math.floor(row["announcementTime"] / 1000)))
+                                 datetime.datetime.fromtimestamp(math.floor(row["announcementTime"] / 1000)))
                 loader.add_value("adjunct_url", row["adjunctUrl"])
                 loader.add_value("adjunct_size", row["adjunctSize"])
                 loader.add_value("adjunct_type", row["adjunctType"])
