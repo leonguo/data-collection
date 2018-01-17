@@ -22,11 +22,11 @@ class ImageSpider(scrapy.Spider):
     #     }
     # }
 
-    start_urls = ['https://www.pinterest.com/resource/UserSessionResource/create/']
+    start_urls = ['https://www.pinterest.com/login']
     # 先登录网站
     def parse(self, response):
         return scrapy.FormRequest.from_response(response, callback=self.after_login, method="POST",
-                                                formdata={"source_url": "/login/?referrer=home_page", "data": '{"options":{"username_or_email":"hotman8168@gmail.com","password":"hotman8168com","seamless":false},"context":{}}'})
+                                                formdata={"id": "hotman8168@gmail.com", "password": "hotman8168com"})
 
     def after_login(self, response):
         self.logger.warning("response: poster index page[%s] crawl status: %d", response.url, response.status)
