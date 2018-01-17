@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*
 
-
 # images 抓取
 
 import scrapy
@@ -23,24 +22,18 @@ class ImageSpider(scrapy.Spider):
     #     }
     # }
 
-    start_urls = ['http://58921.com/user/login']
-
-    # http://58921.com/user/login/ajax?ajax=submit&__q=user/login
-    # mail:469624718 @ qq.com
-    # pass:123456
-    # form_id:user_login_form
-    # form_token:c58a2194ff6c2db654c3dbf82be32459
-    # submit:登录
+    start_urls = ['https://www.pinterest.com/resource/UserSessionResource/create/']
+    # 先登录网站
     def parse(self, response):
         return scrapy.FormRequest.from_response(response, callback=self.after_login, method="POST",
-                                                formdata={"mail": "469624718@qq.com", "pass": "123456"})
+                                                formdata={"source_url": "/login/?referrer=home_page", "data": '{"options":{"username_or_email":"hotman8168@gmail.com","password":"hotman8168com","seamless":false},"context":{}}'})
 
     def after_login(self, response):
         self.logger.warning("response: poster index page[%s] crawl status: %d", response.url, response.status)
-        yield scrapy.Request(url="http://58921.com/alltime/2017",
+        yield scrapy.Request(url="https://www.pinterest.com",
                              callback=self.action)
 
     def action(self, response):
-        self.logger.warning("response: film page url [%s] crawl status: %d", response.url, response.status)
+        self.logger.warning("response: image page url [%s] crawl status: %d", response.url, response.status)
         if response.status == 200:
-            print 'dd'
+            print response.content

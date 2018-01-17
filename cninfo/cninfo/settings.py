@@ -99,7 +99,7 @@ if not os.path.exists(pre_fn):
     os.makedirs(pre_fn)
 
 LOG_FILE = '%s%s' % (pre_fn, file_name)
-LOG_LEVEL = "WARNING"
+LOG_LEVEL = "INFO"
 
 FEED_EXPORT_ENCODING = 'utf-8'
 
